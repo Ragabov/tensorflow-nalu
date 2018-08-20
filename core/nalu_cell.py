@@ -30,7 +30,7 @@ class NaluCell(object):
         """
         g = tf.sigmoid(tf.matmul(self._g, input))
         a = self._add_sub_nac(input)
-        m = tf.exp(self._mult_div_nac(tf.log(input + epsillon)))
+        m = tf.exp(self._mult_div_nac(tf.log(tf.abs(input) + epsillon)))
         y = tf.multiply(g, a) + tf.multiply(1 - g, m)
 
         return y
