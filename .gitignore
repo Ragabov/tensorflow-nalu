@@ -1,3 +1,4 @@
 *.pyc
 *~
 experiments/.ipynb_checkpoints/
+.ipynb linguist-documentation
