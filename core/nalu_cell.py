@@ -33,4 +33,4 @@ class NaluCell(object):
         m = tf.asinh(self._mult_div_nac(tf.sinh((input))))
         y = tf.multiply(g, a) + tf.multiply(1 - g, m)
 
-        return yg
+        return y
