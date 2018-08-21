@@ -3,6 +3,14 @@
 A tensorflow implementation of Neural Arithmetic Logic Unit, Trask et al.
 Paper: https://arxiv.org/abs/1808.00508
 
+## Modifications to the original model 
+
+The NALU cell proposed in the paper had a major drawback that it can't model multiplication of negative inputs since 
+multiplication is implemented as addition in log-space. 
+
+A solution to this was to avoid working in the log-space of the inputs and instead use the asinh function as porposed here:
+https://www.reddit.com/r/MachineLearning/comments/94833t/neural_arithmetic_logic_units/e3u974x/
+
 ## Getting Started
 
 ```python 
