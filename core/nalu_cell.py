@@ -18,7 +18,7 @@ class NaluCell(object):
                     "G",
                     [output_shape, input_shape],
                     dtype=tf.float32,
-                    initializer=tf.contrib.layers.xavier_initializer()
+                    initializer=tf.truncated_normal_initializer(stddev=.01)
                 )
 
     def __call__(self, input, epsillon=1e-07):

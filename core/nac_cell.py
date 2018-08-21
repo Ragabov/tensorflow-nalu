@@ -17,13 +17,13 @@ class NacCell(object):
                 "Wt",
                 [output_shape, input_shape],
                 dtype=tf.float32,
-                initializer=tf.contrib.layers.xavier_initializer()
+                initializer=tf.truncated_normal_initializer(stddev=.01)
             )
             self._M = tf.get_variable(
                 "M",
                 [output_shape, input_shape],
                 dtype=tf.float32,
-                initializer=tf.contrib.layers.xavier_initializer()
+                initializer=tf.truncated_normal_initializer(stddev=.01)
             )
             self.W = tf.multiply(tf.tanh(self._Wt), tf.sigmoid(self._Wt))
 
