@@ -21,7 +21,7 @@ class NaluCell(object):
                     initializer=tf.truncated_normal_initializer(stddev=.01)
                 )
 
-    def __call__(self, input, epsillon=1e-07):
+    def __call__(self, input):
         """
         Performs forward propagation for the NAC cell
 
@@ -30,7 +30,7 @@ class NaluCell(object):
         """
         g = tf.sigmoid(tf.matmul(self._g, input))
         a = self._add_sub_nac(input)
-        m = tf.exp(self._mult_div_nac(tf.log(tf.abs(input) + epsillon)))
+        m = tf.asinh(self._mult_div_nac(tf.sinh((input))))
         y = tf.multiply(g, a) + tf.multiply(1 - g, m)
 
-        return y
+        return yg
