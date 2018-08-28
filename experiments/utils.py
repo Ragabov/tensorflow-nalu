@@ -18,10 +18,13 @@ def generate_synthetic_arithmetic_dataset(arithmetic_op, min_value, max_value, s
     """
     scaled_input_values = np.random.randint(min_value, max_value, (set_size, sample_size))
 
-    if boundaries is None or len(boundaries) != 4:
+    if boundaries is None:
         boundaries = [np.random.randint(sample_size) for i in range(4)]
         boundaries[1] = np.random.randint(boundaries[0], sample_size)
         boundaries[3] = np.random.randint(boundaries[2], sample_size)
+    else:
+        if len(boundaries) != 4:
+            raise ValueError("boundaries is expected to be a list of 4 elements but found {}".format(len(boundaries)))
 
     a = np.array([np.sum(sample[boundaries[0]:boundaries[1]]) for sample in scaled_input_values])
     b = np.array([np.sum(sample[boundaries[2]:boundaries[3]]) for sample in scaled_input_values])

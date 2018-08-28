@@ -1,6 +1,6 @@
 import unittest
 
-from nalu.experiments.utils import *
+from experiments.utils import *
 
 class UtilsTest(unittest.TestCase):
 
